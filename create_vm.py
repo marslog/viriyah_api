@@ -92,10 +92,10 @@ def generate_vm_payload():
         "sockets": 1,
         "memory_mb": 4096,
         "count": 1,
-        "name": "win_vm_by_terraform",
-        "description": "Windows VM from ISO",
+        "name": "Terraform_windows10",
+        "description": "Windows VM from ISO (fixed)",
         "advance_param": {
-            "boot_order": "cd",  # boot จาก ISO
+            "boot_order": "cd",  # Boot จาก ISO
             "onboot": 0,
             "schedopt": 0,
             "abnormal_recovery": 1,
@@ -104,28 +104,25 @@ def generate_vm_payload():
             "balloon_memory": 0,
             "hugepage_memory": 0
         },
-        "cdrom": {
-            "cdrom_boot": 1,
-            "image_id": "bc8d2850-c82f-439a-a051-e90b522f0995"  # ISO boot
-        },
         "disks": [
             {
                 "id": "ide0",
-                "type": "derive_disk",
+                "type": "new_disk",   # ✅ ถูกต้อง
                 "preallocate": 0,
-                "size_mb": 81920  # 80GB
+                "size_mb": 81920
             }
         ],
         "networks": [
             {
                 "vif_id": "net0",
                 "connect": 1,
-                "model": "virtio",
-                "host_iso": 0
+                "model": "virtio"
             }
         ],
         "power_on": 0
     }
+
+
 
 
 
