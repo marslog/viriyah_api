@@ -89,7 +89,12 @@ if __name__ == "__main__":
         "Availability Zones": "/janus/20180725/azs",
         "Images": "/janus/20180725/images",
         "VPCs": "/janus/20180725/vpcs",
-        "Subnets": "/janus/20180725/subnets"
+        "Subnets": "/janus/20180725/subnets",
+        "List": "/janus/20180725/servers",
+        "Get service images": "/janus/20180725/service-images",
+        "storage tags": "/janus/20180725/storages/tags",
+        "Query Storage List": "/janus/20180725/storages",
+        
     }
 
     print("\nSCP Resource Information")
