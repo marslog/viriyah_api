@@ -82,20 +82,20 @@ def load_config():
 
 def generate_vm_payload():
     return {
-          "az_id": "9d5d56c1-10bb-45ba-9862-acf2bd4bcf64",
+        "az_id": "9d5d56c1-10bb-45ba-9862-acf2bd4bcf64",
         "location": {
             "id": "cluster"
         },
         "storage_tag_id": "11111111-1111-1111-1111-111111111111",
-        "image_id": "fbecf65e-fda0-4b55-bbdf-aac1034cd89e",
-        "cores": 1,
+        "image_id": "bc8d2850-c82f-439a-a051-e90b522f0995",  # Windows ISO
+        "cores": 2,
         "sockets": 1,
-        "memory_mb": 1024,
+        "memory_mb": 4096,
         "count": 1,
-        "name": "terraform_wasin",
-        "description": "",
+        "name": "win_vm_by_terraform",
+        "description": "Windows VM from ISO",
         "advance_param": {
-            "boot_order": "c",
+            "boot_order": "cd",  # boot จาก ISO
             "onboot": 0,
             "schedopt": 0,
             "abnormal_recovery": 1,
@@ -104,24 +104,29 @@ def generate_vm_payload():
             "balloon_memory": 0,
             "hugepage_memory": 0
         },
+        "cdrom": {
+            "cdrom_boot": 1,
+            "image_id": "bc8d2850-c82f-439a-a051-e90b522f0995"  # ISO boot
+        },
         "disks": [
             {
-            "id": "ide0",
-            "type": "derive_disk",
-            "preallocate": 0,
-            "size_mb": 81920
+                "id": "ide0",
+                "type": "derive_disk",
+                "preallocate": 0,
+                "size_mb": 81920  # 80GB
             }
         ],
         "networks": [
             {
-            "vif_id": "net0",
-            "connect": 1,
-            "model": "virtio",
-            "host_iso": 0,
+                "vif_id": "net0",
+                "connect": 1,
+                "model": "virtio",
+                "host_iso": 0
             }
         ],
         "power_on": 0
-        }
+    }
+
 
 
 def write_payload_to_file(payload, filename="payload.json"):
