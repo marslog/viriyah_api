@@ -1,10 +1,9 @@
 # main.tf
+
 provider "null" {}
 
-resource "null_resource" "generate_vm" {
+resource "null_resource" "create_vm_with_python" {
   provisioner "local-exec" {
-    command = <<EOT
-      python3 create_vm.py
-    EOT
+    command = "python3 create_vm.py"
   }
 }
